@@ -18,7 +18,10 @@ static int numPlays = 0;
 /* Mutex */
 /* The mutex is a program object that allows multiple program   */
 /* threads to share the same resource. In this case it permit   */
-/* to inicialize a thread mutex.                                */
+/* to inicialize a thread mutex and also to prevent changes     */
+/* that could be made to the board, while we are performing     */
+/* operations on it.                                            */
+/* This mutex ensures the principle of mutual exclusion.        */
 static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 /* ********** */
