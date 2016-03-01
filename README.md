@@ -1,6 +1,6 @@
 # Tic Tac Toe Web Service Noughts and Crosses Game II
 
-![alt tag](assets/2000px-Tic_tac_toe.png "Tic Tac Toe" =50%)
+<img src="assets/2000px-Tic_tac_toe.png" alt="Tic Tac Toe" width="50%">
 
 ## Preface
 
