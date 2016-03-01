@@ -2,6 +2,8 @@
 
 1.1) Onde estão as rotinas de conversão de tipos de dados?
 
+O Sun RPC pode passar tipos de dados arbitrarios como argumentos e como resultados que sao convertidos para External Fata Representation (XDR). O processo de marshalling e unmarshalling especifica nas chamadas a funcao clnt_call o local onde podera ser construido o procedimento que recorre com apoio a biblioteca ou aos procedimentos definidos pelo utilizador, estes, definidos em termos de si mesmos.
+
 1.2) Onde é chamada a função clnt_call()?
 
 Cada stub cliente procede a invocacao dos procedimentos clnt_call os quais tem uma funcao similar chamada de DoOperation.
