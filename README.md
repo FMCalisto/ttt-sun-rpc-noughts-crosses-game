@@ -7,35 +7,34 @@ Based on the examples, was built a new Web Service Tic Tac Toe (noughts and cros
 
 ### Starting
 
-- The starting point was the ```ttt-local```
-
-- The point of arrival is the ```ttt-ws_juddi``` and ```ttt-ws-cli_juddi```, but there are still major changes
-already done.
-
-The class ```example.ws.uddi.UDDINaming``` uses the **API JAX-R** to make the interactions with the
-**UDDI server**.
-
-To use the **API JAX-R** the ```juddi-client``` *libraries* are required
-(to be included in the ```pom.xml``` file)
-
-Review the dependencies in the previous example and add what is missing inside the ```<dependencies>``` tag.
-
-
-#### On the Server Side (```ttt-ws_juddi```):
-
-- View the ```TTT``` interface and its implementation ```TTTImpl```
-
-- Complete the ```javax.jws.WebService notes```, indicating the implemented interface:
+Run on the console:
 
 ```
-ttt.TTT
+rpcgen ttt.x
+````
+
+> So that the SUS PRC manages various support files to the distributed application.
+
+Then run:
+
+```
+rpcgen -Sc ttt.x> ttt_client.c
 ```
 
+> To generate an instance of a client. (There is also the option to generate a -Ss server example)
 
-#### On the Client Side (```ttt-ws-cli_juddi```):
+Launch the server remotely and try to play through the built client.
 
-Set in the ```pom.xml file``` (beyond (s) dependent (s) unknown):
+To do this, run the console:
 
-- The location of the **UDDI** (```uddi.url```)
+```
+./ttt_server &
+```
 
-- The service name to search (```ws.name```)
+> Launches server in background - background
+
+```
+./ttt_client Localhost
+```
+
+> Launches client to play on server registered on the machine itself (localhost)
