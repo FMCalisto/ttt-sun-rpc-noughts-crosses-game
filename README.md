@@ -1,5 +1,7 @@
 # Tic Tac Toe Web Service Noughts and Crosses Game II
 
+![alt tag](assets/2000px-Tic_tac_toe.png "Tic Tac Toe")
+
 ## Preface
 
 Based on the examples, was built a new Web Service Tic Tac Toe (noughts and crosses).
