@@ -1,0 +1,15 @@
+1) Estude os ficheiros gerados.
+
+1.1) Onde estão as rotinas de conversão de tipos de dados?
+
+1.2) Onde é chamada a função clnt_call()?
+
+Cada stub cliente procede a invocacao dos procedimentos clnt_call os quais tem uma funcao similar chamada de DoOperation.
+
+1.3) Que ficheiros pertencem ao cliente, ao servidor, e a ambos?
+
+(consulte também a Makefile)
+
+1.4) Que ficheiros estão incompletos e devem ser alterados pelo programador?
+
+1.5) Qual o protocolo que o cliente e servidor usam para comunicar?
