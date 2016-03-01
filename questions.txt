@@ -23,4 +23,10 @@ Ambos: ttt.xdr.c;
 
 4.d) Que ficheiros estão incompletos e devem ser alterados pelo programador?
 
+ttt_server.c
+
 4.e) Qual o protocolo que o cliente e servidor usam para comunicar?
+
+UDP
+
+clnt = clnt_create(host, TTT, V1, "udp");
