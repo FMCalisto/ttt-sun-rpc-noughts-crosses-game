@@ -17,8 +17,8 @@ Cada stub cliente procede a invocacao dos procedimentos clnt_call os quais tem u
 
 (consulte também a Makefile)
 
-Cliente: ttt_client
-Servidor: ttt_server
+Cliente: ttt_clnt.c, ttt_clnt.h;
+Servidor: ttt_server.c;
 
 4.d) Que ficheiros estão incompletos e devem ser alterados pelo programador?
 
