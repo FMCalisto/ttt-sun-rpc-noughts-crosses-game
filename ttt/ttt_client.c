@@ -26,7 +26,7 @@ void ttt_1(char *host)
 	int column = 0; 
 	/*extra*/
 
-	int winner; //= -1; 
+	int winner=-1;
 
 	clnt = clnt_create(host, TTT, V1, "udp");
 	if (clnt == NULL) {
