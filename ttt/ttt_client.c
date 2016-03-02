@@ -28,7 +28,6 @@ void ttt_1(char *host)
 
 	int winner; //= -1; 
 
-	int *cagalhao;
 	clnt = clnt_create(host, TTT, V1, "udp");
 	if (clnt == NULL) {
 		clnt_pcreateerror(host);
