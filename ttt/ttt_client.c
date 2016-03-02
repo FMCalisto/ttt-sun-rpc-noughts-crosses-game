@@ -58,7 +58,7 @@ puts("fase1 over");
       
       currentboard_1((void*)&currentboard_1_arg, clnt);
       
-      printf("%s\n", buffer);
+      printf("%s\n", *currentboard_1((void*)&currentboard_1_arg, clnt));
       
       printf("\nPlayer %d, please enter the number of the square "
 	     "where you want to place your %c (or 0 to refresh the board): ", player,(player==1)?'X':'O');
@@ -74,10 +74,10 @@ puts("fase1 over");
       
  play_1_arg.row = row;
  play_1_arg.column = column;
-
+	play_1_arg.player = 0;
       //play_res = play(row, column, player);
 
-		printf("pilinha: %d \n pito: %d\n\n\n", play_1_arg.row, *&play_1_arg.column);
+		printf("linha: %d \n coluna: %d\n\n\n", *&play_1_arg.row, *&play_1_arg.column);
 
 		//cagalhao = (int *)play_1(&play_1_arg, clnt);	
 		play_res = * (int *)play_1(&play_1_arg, clnt);
