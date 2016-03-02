@@ -12,27 +12,28 @@ ttt_1(host)
 char *host;
 {
 	CLIENT *clnt;
-	char * *result_1;
+	char * *buffer;
 	char*  currentboard_1_arg;
-	int  *result_2;
+	int  *play_res;
 	play_args  play_1_arg;
-	int  *result_3;
+	int  *winner = -1;
 	char*  checkwinner_1_arg;
 	clnt = clnt_create(host, TTT, V1, "udp");
+
 	if (clnt == NULL) {
 		clnt_pcreateerror(host);
 		exit(1);
 	}
-	result_1 = currentboard_1((void*)&currentboard_1_arg, clnt);
-	if (result_1 == NULL) {
+	// result_1 = currentboard_1((void*)&currentboard_1_arg, clnt);
+	if (buffer == NULL) {
 		clnt_perror(clnt, "call failed:");
 	}
-	result_2 = play_1(&play_1_arg, clnt);
-	if (result_2 == NULL) {
+	// result_2 = play_1(&play_1_arg, clnt);
+	if (play_res == NULL) {
 		clnt_perror(clnt, "call failed:");
 	}
-	result_3 = checkwinner_1((void*)&checkwinner_1_arg, clnt);
-	if (result_3 == NULL) {
+	// result_3 = checkwinner_1((void*)&checkwinner_1_arg, clnt);
+	if (winner == NULL) {
 		clnt_perror(clnt, "call failed:");
 	}
 	clnt_destroy( clnt );
@@ -43,75 +44,77 @@ char *host;
     /*                                                    */
 	/* ================================================== */
 
-//   int player = 0;                              /* Player number - 0 or 1               */
-//   int go = 0;                                  /* Square selection number for turn     */
-//   int row = 0;                                 /* Row index for a square               */  
-//   int column = 0;                              /* Column index for a square            */
-//   int winner = -1;                              /* The winning player                   */
-//   int play_res;
-//   char buffer[MAX_BUFFER_LEN];
+  int player = 0;                              /* Player number - 0 or 1               */
+  int go = 0;                                  /* Square selection number for turn     */
+  int row = 0;                                 /* Row index for a square               */  
+  int column = 0;                              /* Column index for a square            */
+  //int winner = -1;                              /* The winning player                   */
+  //int play_res;
+  //char buffer[MAX_BUFFER_LEN];
 
-//   /* The main game loop. The game continues for up to 9 turns */
-//   /* As long as there is no winner                            */
-//   do {
-//     /* Get valid player square selection */
-//     do {
-//       /* Print current board */
-//       currentBoard(buffer);
-//       printf("%s\n", buffer);
+  /* The main game loop. The game continues for up to 9 turns */
+  /* As long as there is no winner                            */
+  do {
+    /* Get valid player square selection */
+    do {
+      /* Print current board */
+      //currentBoard(buffer);
+      buffer = currentboard_1((void*)&currentboard_1_arg, clnt);
+      printf("%s\n", buffer);
       
-//       printf("\nPlayer %d, please enter the number of the square "
-// 	     "where you want to place your %c (or 0 to refresh the board): ", player,(player==1)?'X':'O');
-//       scanf(" %d", &go);
+      printf("\nPlayer %d, please enter the number of the square "
+	     "where you want to place your %c (or 0 to refresh the board): ", player,(player==1)?'X':'O');
+      scanf(" %d", &go);
 
-//       if (go == 0){
-// 	play_res = 0;
-// 	continue;
-//       }
+      if (go == 0){
+	play_res = 0;
+	continue;
+      }
 
-//       row = --go/3;                                 /* Get row index of square      */
-//       column = go%3;                                /* Get column index of square   */
+      row = --go/3;                                 /* Get row index of square      */
+      column = go%3;                                /* Get column index of square   */
       
-//       play_res = play(row, column, player);
-//       if (play_res != 0) {
-// 	switch (play_res) {
-// 	case 1:
-// 	  printf("Position outside board.");
-// 	  break;
-// 	case 2:
-// 	  printf("Square already taken.");
-// 	  break;
-// 	case 3:
-// 	  printf("Not your turn.");
-// 	  break;
-// 	case 4:
-// 	  printf("Game has finished.");
-// 	  break;
-// 	}
-// 	printf(" Try again...\n");
-//       }
-//     } while(play_res != 0);
+      //play_res = play(row, column, player);
+      play_res = play_1(&play_1_arg, clnt);
+      if (play_res != 0) {
+	switch (play_res) {
+	case 1:
+	  printf("Position outside board.");
+	  break;
+	case 2:
+	  printf("Square already taken.");
+	  break;
+	case 3:
+	  printf("Not your turn.");
+	  break;
+	case 4:
+	  printf("Game has finished.");
+	  break;
+	}
+	printf(" Try again...\n");
+      }
+    } while(play_res != 0);
     
-//     winner = checkWinner();
-//     player = (player+1)%2;                           /* Select player */
+    //winner = checkWinner();
+    winner = checkwinner_1((void*)&checkwinner_1_arg, clnt);
+    player = (player+1)%2;                           /* Select player */
  
-//     printf("player %d\n", player);
+    printf("player %d\n", player);
 
-//   } while (winner == -1);
+  } while (winner == -1);
   
-//   /* Game is over so display the final board */
-//   currentBoard(buffer);
-//   printf("%s\n", buffer);
+  /* Game is over so display the final board */
+  currentBoard(buffer);
+  printf("%s\n", buffer);
   
-//   /* Display result message */
-//   if(winner == 2)
-//     printf("\nHow boring, it is a draw\n");
-//   else
-//     printf("\nCongratulations, player %d, YOU ARE THE WINNER!\n", winner);
+  /* Display result message */
+  if(winner == 2)
+    printf("\nHow boring, it is a draw\n");
+  else
+    printf("\nCongratulations, player %d, YOU ARE THE WINNER!\n", winner);
 
-//   return 0;
-
-// }
+  return 0;
+}
 
 
 main(argc, argv)
