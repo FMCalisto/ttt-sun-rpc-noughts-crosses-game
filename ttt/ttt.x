@@ -10,4 +10,4 @@ program TTT {
         int PLAY(play_args)=2;
         int CHECKWINNER(void)=3;
     } = 1;
-} = 0x31470916;
+} = 0x31423456;

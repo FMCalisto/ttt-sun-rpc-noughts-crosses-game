@@ -6,9 +6,9 @@
 
 /* The board */
 static char board[3][3] = {
-    {'1','2','3'},  /* Initial values are reference numbers     */
-    {'4','5','6'},  /* used to select a vacant square for       */
-    {'7','8','9'}   /* a turn.                                  */
+    {'1','2','3'},  /* Initial values are reference numbers */
+    {'4','5','6'},  /* used to select a vacant square for   */
+    {'7','8','9'}   /* a turn.                              */
 };
 
 /* Next player allowed to play */
@@ -16,12 +16,6 @@ static int nextPlayer = 0;
 /* Number of plays so far */
 static int numPlays = 0;
 /* Mutex */
-/* The mutex is a program object that allows multiple program   */
-/* threads to share the same resource. In this case it permit   */
-/* to inicialize a thread mutex and also to prevent changes     */
-/* that could be made to the board, while we are performing     */
-/* operations on it.                                            */
-/* This mutex ensures the principle of mutual exclusion.        */
 static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 /* ********** */
