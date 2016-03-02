@@ -6,9 +6,12 @@
 #ifndef _TTT_H_RPCGEN
 #define _TTT_H_RPCGEN
 
-#define RPCGEN_VERSION	199506
-
 #include <rpc/rpc.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 struct play_args {
@@ -17,50 +20,47 @@ struct play_args {
 	int player;
 };
 typedef struct play_args play_args;
-#ifdef __cplusplus
-extern "C" bool_t xdr_play_args(XDR *, play_args*);
-#elif __STDC__
-extern  bool_t xdr_play_args(XDR *, play_args*);
-#else /* Old Style C */
-bool_t xdr_play_args();
-#endif /* Old Style C */
 
+#define TTT 0x31423456
+#define V1 1
 
-#define TTT ((rpc_uint)0x31423456)
-#define V1 ((rpc_uint)1)
-
-#ifdef __cplusplus
-#define CURRENTBOARD ((rpc_uint)1)
-extern "C" char ** currentboard_1(void *, CLIENT *);
-extern "C" char ** currentboard_1_svc(void *, struct svc_req *);
-#define PLAY ((rpc_uint)2)
-extern "C" int * play_1(play_args *, CLIENT *);
-extern "C" int * play_1_svc(play_args *, struct svc_req *);
-#define CHECKWINNER ((rpc_uint)3)
-extern "C" int * checkwinner_1(void *, CLIENT *);
-extern "C" int * checkwinner_1_svc(void *, struct svc_req *);
-
-#elif __STDC__
-#define CURRENTBOARD ((rpc_uint)1)
+#if defined(__STDC__) || defined(__cplusplus)
+#define CURRENTBOARD 1
 extern  char ** currentboard_1(void *, CLIENT *);
 extern  char ** currentboard_1_svc(void *, struct svc_req *);
-#define PLAY ((rpc_uint)2)
+#define PLAY 2
 extern  int * play_1(play_args *, CLIENT *);
 extern  int * play_1_svc(play_args *, struct svc_req *);
-#define CHECKWINNER ((rpc_uint)3)
+#define CHECKWINNER 3
 extern  int * checkwinner_1(void *, CLIENT *);
 extern  int * checkwinner_1_svc(void *, struct svc_req *);
+extern int ttt_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
-#else /* Old Style C */
-#define CURRENTBOARD ((rpc_uint)1)
+#else /* K&R C */
+#define CURRENTBOARD 1
 extern  char ** currentboard_1();
 extern  char ** currentboard_1_svc();
-#define PLAY ((rpc_uint)2)
+#define PLAY 2
 extern  int * play_1();
 extern  int * play_1_svc();
-#define CHECKWINNER ((rpc_uint)3)
+#define CHECKWINNER 3
 extern  int * checkwinner_1();
 extern  int * checkwinner_1_svc();
-#endif /* Old Style C */
+extern int ttt_1_freeresult ();
+#endif /* K&R C */
+
+/* the xdr functions */
+
+#if defined(__STDC__) || defined(__cplusplus)
+extern  bool_t xdr_play_args (XDR *, play_args*);
+
+#else /* K&R C */
+extern bool_t xdr_play_args ();
+
+#endif /* K&R C */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* !_TTT_H_RPCGEN */

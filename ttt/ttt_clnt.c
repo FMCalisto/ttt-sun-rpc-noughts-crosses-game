@@ -3,46 +3,53 @@
  * It was generated using rpcgen.
  */
 
+#include <memory.h> /* for memset */
 #include "ttt.h"
 
 /* Default timeout can be changed using clnt_control() */
 static struct timeval TIMEOUT = { 25, 0 };
 
 char **
-currentboard_1(argp, clnt)
-	void *argp;
-	CLIENT *clnt;
+currentboard_1(void *argp, CLIENT *clnt)
 {
 	static char *clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
-	if (clnt_call(clnt, CURRENTBOARD, xdr_void, argp, xdr_wrapstring, &clnt_res, TIMEOUT) != RPC_SUCCESS)
+	if (clnt_call (clnt, CURRENTBOARD,
+		(xdrproc_t) xdr_void, (caddr_t) argp,
+		(xdrproc_t) xdr_wrapstring, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
+	}
 	return (&clnt_res);
 }
 
 int *
-play_1(argp, clnt)
-	play_args *argp;
-	CLIENT *clnt;
+play_1(play_args *argp, CLIENT *clnt)
 {
 	static int clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
-	if (clnt_call(clnt, PLAY, xdr_play_args, argp, xdr_int, &clnt_res, TIMEOUT) != RPC_SUCCESS)
+	if (clnt_call (clnt, PLAY,
+		(xdrproc_t) xdr_play_args, (caddr_t) argp,
+		(xdrproc_t) xdr_int, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
+	}
 	return (&clnt_res);
 }
 
 int *
-checkwinner_1(argp, clnt)
-	void *argp;
-	CLIENT *clnt;
+checkwinner_1(void *argp, CLIENT *clnt)
 {
 	static int clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
-	if (clnt_call(clnt, CHECKWINNER, xdr_void, argp, xdr_int, &clnt_res, TIMEOUT) != RPC_SUCCESS)
+	if (clnt_call (clnt, CHECKWINNER,
+		(xdrproc_t) xdr_void, (caddr_t) argp,
+		(xdrproc_t) xdr_int, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
+	}
 	return (&clnt_res);
 }

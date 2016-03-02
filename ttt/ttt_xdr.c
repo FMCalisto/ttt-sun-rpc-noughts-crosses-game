@@ -6,16 +6,15 @@
 #include "ttt.h"
 
 bool_t
-xdr_play_args(xdrs, objp)
-	XDR *xdrs;
-	play_args *objp;
+xdr_play_args (XDR *xdrs, play_args *objp)
 {
+	register int32_t *buf;
 
-	if (!xdr_int(xdrs, &objp->row))
-		return (FALSE);
-	if (!xdr_int(xdrs, &objp->column))
-		return (FALSE);
-	if (!xdr_int(xdrs, &objp->player))
-		return (FALSE);
-	return (TRUE);
+	 if (!xdr_int (xdrs, &objp->row))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->column))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->player))
+		 return FALSE;
+	return TRUE;
 }

@@ -117,7 +117,7 @@ char *host;
   } while (winner == -1);
   
   /* Game is over so display the final board */
-  currentBoard(buffer); //FIXME
+  // currentBoard(buffer); //FIXME
   printf("%s\n", buffer);
   
   /* Display result message */
