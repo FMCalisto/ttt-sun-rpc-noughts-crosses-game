@@ -18,23 +18,25 @@ void ttt_1(char *host)
 	int  *result_3;
 	char*  checkwinner_1_arg;
 
-	/*extra*/
-	char buffer[MAX_BUFFER_LEN];
-	int play_res=99;
-	int player = 0; 
-	int go = 0; 
+	/*variaveis para o ciclo de jogo*/
+	int player = 0;
+	int go = 0;
+	int play_res;
 	int row = 0;                                  
 	int column = 0; 
-	int *winner; //= -1; 
+	/*extra*/
+
+	int winner; //= -1; 
 
 	int *cagalhao;
 	clnt = clnt_create(host, TTT, V1, "udp");
 	if (clnt == NULL) {
 		clnt_pcreateerror(host);
-		puts("djhfsdjfhsbdkfjhsdkjhsdkhjsdkfjhsjdkh");
 		exit(1);
 	}
-	puts("sdfsdfsddf");
+    
+	play_1_arg.player =0; /*Cria o jogador inicial, tal como no local_main*/
+
 	result_1 = currentboard_1((void*)&currentboard_1_arg, clnt);
 	if (result_1 == NULL) {
 		clnt_perror(clnt, "call failed:");
@@ -47,18 +49,18 @@ void ttt_1(char *host)
 	if (result_3 == NULL) {
 		clnt_perror(clnt, "call failed:");
 	}
-puts("fase1 over");
-    puts("----------------------------------------------------------------------------------------");
-    
+
+	puts("Fase1 over");
+
     do {
     /* Get valid player square selection */
     do {
       /* Print current board */
-      //currentBoard(buffer);
+      player = play_1_arg.player;
       
       currentboard_1((void*)&currentboard_1_arg, clnt);
       
-      printf("%s\n", *currentboard_1((void*)&currentboard_1_arg, clnt));
+      printf("Estado do tabuleiro:\n%s\n", *currentboard_1((void*)&currentboard_1_arg, clnt));
       
       printf("\nPlayer %d, please enter the number of the square "
 	     "where you want to place your %c (or 0 to refresh the board): ", player,(player==1)?'X':'O');
@@ -69,20 +71,16 @@ puts("fase1 over");
 		continue;
       }
 
-      row = --go/3;                                 /* Get row index of square      */
+	  row = --go/3;                                 /* Get row index of square      */
       column = go%3;                                /* Get column index of square   */
       
- play_1_arg.row = row;
- play_1_arg.column = column;
-	play_1_arg.player = 0;
-      //play_res = play(row, column, player);
+ 	  play_1_arg.row = row;
+ 	  play_1_arg.column = column;
 
-		printf("linha: %d \n coluna: %d\n\n\n", *&play_1_arg.row, *&play_1_arg.column);
+	  play_res = * (int *)play_1(&play_1_arg, clnt);
 
-		//cagalhao = (int *)play_1(&play_1_arg, clnt);	
-		play_res = * (int *)play_1(&play_1_arg, clnt);
+	  printf("+-----------------------------+\n+ O jogador: %d                +\n+ Jogou na Linha: %d Coluna: %d +\n+ O resultado foi: %d          +\n+-----------------------------+\n\n",player, row, column, play_res);
 
-		printf("merdas %d \n\n", play_res);
       if (play_res != 0) {
 			switch (play_res) {
 			case 1:
@@ -103,34 +101,27 @@ puts("fase1 over");
     } while(play_res != 0);
     
     //winner = checkWinner();
-	winner = (int *)checkwinner_1((void*)&checkwinner_1_arg, clnt);    
+	winner = *(int *)checkwinner_1((void*)&checkwinner_1_arg, clnt);    
 
 
-	player = (player+1)%2;                           /* Select player */
+	 play_1_arg.player = (player+1)%2;                           /* Select player */
  
-    printf("player %d\n", player);
+    printf("Jogue player %d\n", player);
 
-  } while ( *winner == -1);
+  } while ( winner == -1);
   
   /* Game is over so display the final board */
   //currentBoard(buffer);
 
-	currentboard_1((void*)&currentboard_1_arg, clnt);
-  printf("%s\n", (char *)(void*)&currentboard_1_arg);//buffer);
-  
+  puts("Jogo temrinado!!!\n\n");
+  currentboard_1((void*)&currentboard_1_arg, clnt);
+  printf("%s\n", *currentboard_1((void*)&currentboard_1_arg, clnt));
+
   /* Display result message */
-  if(*winner == 2)
+  if(winner == 2)
     printf("\nHow boring, it is a draw\n");
   else
-    printf("\nCongratulations, player %d, YOU ARE THE WINNER!\n", *winner);
-    
-    
-    
-    
-    
-    
-    
-puts("temrinou");
+    printf("\nCongratulations, player %d, YOU ARE THE WINNER!\n", winner);
 	
 	clnt_destroy( clnt );
 }
