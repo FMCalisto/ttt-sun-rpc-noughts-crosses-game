@@ -39,7 +39,7 @@ To do this, run the console:
 > Launches server in background - background
 
 ```
-./ttt_client Localhost
+./ttt_client localhost
 ```
 
 > Launches client to play on server registered on the machine itself (localhost)
