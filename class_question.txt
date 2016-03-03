@@ -1,0 +1,1 @@
+1) Introduza um novo Processo Remoto ```trocaSimbolos```, sem argumentos, que troca os simbolos usados por cada jogador. Este procedimento deve ser chamado quando o utilizador escreve "10".
