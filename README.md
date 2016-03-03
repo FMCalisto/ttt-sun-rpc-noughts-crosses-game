@@ -44,52 +44,31 @@ To do this, run the console:
 
 > Launches client to play on server registered on the machine itself (localhost)
 
-## Authors
+===================================================
 
-### Group 35
+Distributed Systems Group 35
+-------------------
 
-<table style="width:100%">
-  <tr>
-    <th>Picture</th>
-    <th>Number</th>
-    <th>GitHub</th>		
-    <th>Name</th>
-    <th>E-Mail</th>
-  </tr>
-  <tr>
-    <td align="center">
-      <img
-        src="https://avatars3.githubusercontent.com/u/7997092?v=3&s=100"
-        alt="Daniel da Costa"
-      >
-    </td>
-    <td align="center">ist169720</td>
-    <td align="center"><a href="https://github.com/atsoket">atsoket</a></td>		
-    <td align="center">Daniel da Costa</td>
-    <td align="center"><a href="mailto:daniel.da.costa@tecnico.ulisboa.pt">daniel.da.costa</a></td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img
-        src="https://avatars0.githubusercontent.com/u/11545541?v=3&s=100"
-        alt="Filipe Fernandes"
-      >
-    </td>
-    <td align="center">ist173253</td>
-    <td align="center"><a href="https://github.com/filipefernandes93">filipefernandes93</a></td>		
-    <td align="center">Filipe Fernandes</td>
-    <td align="center"><a href="mailto:filipe.duarte.fernandes@tecnico.ulisboa.pt">filipe.duarte.fernandes</td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img
-        src="https://avatars2.githubusercontent.com/u/1298239?v=3&s=100"
-        alt="Francisco Maria Calisto"
-      >
-    </td>
-    <td align="center">ist170917</td>
-    <td align="center"><a href="https://github.com/FMCalisto">FMCalisto</a></td>		
-    <td align="center">Francisco Maria Calisto</td>
-    <td align="center"><a href="mailto:francisco.calisto@tecnico.ulisboa.pt">francisco.calisto</a></td>
-  </tr>
-</table>
+Daniel da Costa
+
+69720
+
+daniel.da.costa@tecnico.ulisboa.pt
+
+-------------------
+
+Filipe Fernandes
+
+73253
+
+filipe.duarte.fernandes@tecnico.ulisboa.pt
+
+-------------------
+
+Francisco Maria Calisto
+
+70916
+
+francisco.calisto@tecnico.ulisboa.pt
+
+-------------------
