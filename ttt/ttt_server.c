@@ -24,7 +24,7 @@ play_1_svc(play_args *argp, struct svc_req *rqstp)
 {
   static int  result;
 
-  printf("linha: %d \n coluna: %d\n player: %d\n", argp->row, argp->column, argp->player);
+  //printf("linha: %d \n coluna: %d\n player: %d\n", argp->row, argp->column, argp->player);
   result = play(argp->row, argp->column, argp->player);
   
   return &result;
