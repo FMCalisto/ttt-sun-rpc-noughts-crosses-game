@@ -123,7 +123,7 @@ void ttt_1(char *host)
   /* Game is over so display the final board */
   //currentBoard(buffer);
 
-  puts("Jogo temrinado!!!\n\n");
+  puts("Jogo terminado!!!\n\n");
   currentboard_1((void*)&currentboard_1_arg, clnt);
   printf("%s\n", *currentboard_1((void*)&currentboard_1_arg, clnt));
 
