@@ -39,3 +39,9 @@ checkwinner_1_svc(void *argp, struct svc_req *rqstp)
 
   return &result;
 }
+
+void *
+trocasimbolos_1_svc(void *argp, struct svc_req *rqstp)
+{
+    trocaSimbolos2();
+}

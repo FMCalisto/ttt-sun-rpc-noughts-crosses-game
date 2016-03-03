@@ -10,6 +10,7 @@
 
 void ttt_1(char *host)
 {
+	printf("%d\n\n\n\n", MAX_BUFFER_LEN);
 	CLIENT *clnt;
 	char * *result_1;
 	char*  currentboard_1_arg;
@@ -17,6 +18,8 @@ void ttt_1(char *host)
 	play_args  	play_1_arg;
 	int  *result_3;
 	char*  checkwinner_1_arg;
+	char*  trocasimbolos_1_arg;
+	int troca = 0;
 
 	/*variaveis para o ciclo de jogo*/
 	int player = 0;
@@ -49,7 +52,7 @@ void ttt_1(char *host)
 		clnt_perror(clnt, "call failed:");
 	}
 
-	puts("Fase1 over");
+
 
     do {
     /* Get valid player square selection */
@@ -62,13 +65,22 @@ void ttt_1(char *host)
       printf("Estado do tabuleiro:\n%s\n", *currentboard_1((void*)&currentboard_1_arg, clnt));
       
       printf("\nPlayer %d, please enter the number of the square "
-	     "where you want to place your %c (or 0 to refresh the board): ", player,(player==1)?'X':'O');
+	     "where you want to place your %c (or 0 to refresh the board): ", player,((player + troca)==1)?'X':'O');
       scanf(" %d", &go);
 
       if (go == 0){
 		play_res = 0;
 		continue;
-      }
+      }if (go == 10){
+		trocasimbolos_1((void*)&trocasimbolos_1_arg, clnt); 
+		play_res = 0;	
+		
+		if(!troca)
+        troca = 1;
+    else
+        troca = 0;
+		continue;
+	  }
 
 	  row = --go/3;                                 /* Get row index of square      */
       column = go%3;                                /* Get column index of square   */
@@ -76,7 +88,7 @@ void ttt_1(char *host)
  	  play_1_arg.row = row;
  	  play_1_arg.column = column;
 
-	  play_res = * (int *)play_1(&play_1_arg, clnt);
+	  play_res = *(int *)play_1(&play_1_arg, clnt);
 
 	  printf("+-----------------------------+\n+ O jogador: %d                +\n+ Jogou na Linha: %d Coluna: %d +\n+ O resultado foi: %d          +\n+-----------------------------+\n\n",player, row, column, play_res);
 

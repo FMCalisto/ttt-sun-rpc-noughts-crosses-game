@@ -5,11 +5,14 @@
 /* *** GAME STATE *** */
 
 /* The board */
+
 static char board[3][3] = {
     {'1','2','3'},  /* Initial values are reference numbers */
     {'4','5','6'},  /* used to select a vacant square for   */
     {'7','8','9'}   /* a turn.                              */
 };
+
+int troca = 0;
 
 /* Next player allowed to play */
 static int nextPlayer = 0;
@@ -28,6 +31,28 @@ void currentBoard(char *buffer) {
         board[1][0], board[1][1], board[1][2],
         board[2][0], board[2][1], board[2][2]);
     pthread_mutex_unlock(&mutex);
+}
+
+void trocaSimbolos2(){
+
+    int line, row;
+    
+    if(!troca)
+        troca = 1;
+    else
+        troca = 0;
+        
+    for(line = 0; line <= 2; line ++){
+            for(row = 0; row <= 2; row++){
+                if(board[line][row] == 'X'){
+                    board[line][row] = 'O';
+                }else{
+                    if(board[line][row] == 'O'){
+                        board[line][row] = 'X';
+                    }
+                }
+            }
+    }
 }
 
 /* Returns 0 if correct request, >0 otherwise */
@@ -53,7 +78,12 @@ int play(int row, int column, int player) {
         return 4;
     }
 
-    board[row][column] = (player == 1) ? 'X' : 'O';  /* Insert player symbol   */
+    if(troca)
+        board[row][column] = (player == 1) ? 'O' : 'X';  /* Insert player symbol   */
+    else
+        board[row][column] = (player == 1) ? 'X' : 'O';  /* Insert player symbol   */       
+
+       
     nextPlayer = (nextPlayer + 1) % 2;
     numPlays ++;
     pthread_mutex_unlock(&mutex);
