@@ -10,7 +10,6 @@
 
 void ttt_1(char *host)
 {
-	printf("%d\n\n\n\n", MAX_BUFFER_LEN);
 	CLIENT *clnt;
 	char * *result_1;
 	char*  currentboard_1_arg;
