@@ -58,7 +58,6 @@ void ttt_1(char *host)
     do {
       /* Print current board */
       player = play_1_arg.player;
-      
       currentboard_1((void*)&currentboard_1_arg, clnt);
       
       printf("Estado do tabuleiro:\n%s\n", *currentboard_1((void*)&currentboard_1_arg, clnt));
@@ -73,12 +72,14 @@ void ttt_1(char *host)
       }if (go == 10){
 		trocasimbolos_1((void*)&trocasimbolos_1_arg, clnt); 
 		play_res = 0;	
+		player = (player+1)%2;
 		
 		if(!troca)
-        troca = 1;
-    else
-        troca = 0;
-		continue;
+            troca = 1;
+        else
+            troca = 0;
+            
+	    continue;
 	  }
 
 	  row = --go/3;                                 /* Get row index of square      */
