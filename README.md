@@ -1,4 +1,4 @@
-# Tic Tac Toe Web Service Noughts and Crosses Game II
+# Tic Tac Toe Sun RPC Noughts and Crosses Game II
 
 <img src="assets/2000px-Tic_tac_toe.png" alt="Tic Tac Toe" align="center" width="50%"/>
 
