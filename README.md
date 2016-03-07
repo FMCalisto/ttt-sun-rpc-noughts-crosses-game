@@ -46,8 +46,10 @@ To do this, run the console:
 
 ===================================================
 
-Distributed Systems Group 35
+Distributed Systems
 -------------------
+
+#### Group 35
 
 Daniel da Costa
 
