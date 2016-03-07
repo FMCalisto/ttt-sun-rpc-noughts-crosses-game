@@ -4,7 +4,7 @@
 
 ## Preface
 
-Based on the examples, was built a new Web Service Tic Tac Toe (noughts and crosses).
+Based on the examples, was built a new Sun RPC Tic Tac Toe (noughts and crosses).
 
 [Chapter on SUN RPC the 2nd Edition of the book "Distributed Systems: Concepts and Design"](http://www.cdk4.net/wo/additional/rmi/Ed2/SunRPC.pdf)
 
